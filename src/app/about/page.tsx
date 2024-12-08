@@ -46,7 +46,7 @@ export default function About() {
   
         <div className="px-[24px] space-y-6 pt-[50px] pb-[60px]">
           <h2 className="text-2xl font-light leading-tight">
-            Our service isn't just personal, it's actually hyper-personally exquisite
+            Our service isnt just personal, its actually hyper-personally exquisite
           </h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>When we started Avion, the idea was simple. Make high quality furniture affordable and available to the mass market.</p>
@@ -72,7 +72,7 @@ export default function About() {
             <div>
                 <Image className="mb-[24px]" src="/Purchase.png" alt="" width={24} height={24}/>
                 <h2 className="mb-[22px] text-[16px]">Unbeatable prices</h2>
-                <h3 className="mb-[41px] text-[14px]">For our materials and quality you won’t find better prices anywhere</h3>
+                <h3 className="mb-[41px] text-[14px]">For our materials and quality you wont find better prices anywhere</h3>
             </div>
             <div>
                 <Image className="mb-[24px]" src="/Sprout.png" alt="" width={24} height={24}/>
