@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import {
   DropdownMenu,
@@ -13,10 +14,22 @@ import Link from "next/link";
 import Accounts from "@/components/svgs/Accounts";
 import Cart from "@/components/svgs/Cart";
 import Delivery from "@/components/svgs/Delivery";
+import { useState } from "react";
+import { products } from "../data/page";
 
 
 
 export default function Products() {
+
+    const [count, setCount] = useState(0)
+
+    const increment = () => {
+      setCount(count + 1)
+    }
+    const decrement = () => {
+      setCount(count - 1)
+    }
+
     return (
       <main className="min-h-screen bg-gray-50">
         <div className="bg-[#2A254B] min-h-[54px] text-white text-xs py-2 px-[16px] flex items-center gap-4">
@@ -54,17 +67,17 @@ export default function Products() {
   
 
 
-        <div className="first-sec">
+        <div className="first-sec lg:flex">
 
-            <div className="aspect-square bg-gray-100 w-full">
-              <Image src="/Image4.png" alt="" width={390} height={380}/>
+            <div className="aspect-square bg-gray-100 w-full lg:w-[50%]">
+              <Image className="lg:w-[721px] lg:h-[759px]" src="/Image4.png" alt="" width={390} height={380}/>
             </div>
   
-            <div className="space-y-4 px-[24px] pb-[30px] pt-[20px]">
+            <div className="space-y-4 px-[24px] pb-[30px] pt-[20px] lg:w-[50%] lg:px-[100px] lg:pt-[90px]">
 
               <div className="flex flex-col justify-between items-start">
-                <h2 className="text-lg font-medium">The Dandy Chair</h2>
-                <span className="text-lg mt-[10px]">£250</span>
+                <h2 className="text-lg font-medium lg:text-[36px]">The Dandy Chair</h2>
+                <span className="text-lg mt-[10px] lg:text-[24px]">£250</span>
               </div>
   
               <div className="space-y-2">
@@ -97,18 +110,16 @@ export default function Products() {
                 </div>
               </div>
   
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <label className="text-sm">Quantity:</label>
-                  <input
-                    type="number"
-                    defaultValue={1}
-                    min="1"
-                    className="w-20 border rounded-md p-2 text-sm"
-                  />
+              <div className="space-y-4 lg:space-y-0 lg:pt-[40px] lg:flex lg:items-center lg:justify-between">
+                <div className="flex items-center space-x-4 lg:inline">
+                  <label className="text-sm lg:hidden">Quantity:</label>
+                  <span className="hidden lg:inline-flex text-[16px]">Amount:</span>
+                  <button onClick={decrement}>-</button>
+                  <button>{count}</button>
+                  <button onClick={increment}>+</button>
                 </div>
   
-                <button className="w-full bg-[#2A254B] text-white py-3 text-sm">
+                <button className="w-full bg-[#2A254B] text-white py-3 text-sm lg:w-[143px] lg:py-[20px] lg:inline">
                   Add to cart
                 </button>
               </div>
