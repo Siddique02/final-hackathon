@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/router";
 import { useState } from "react";
-import getProductById from "@/app/data/page";
+import { getProductById } from "@/app/data/page";
 import Image from "next/image";
 import Link from "next/link";
 
