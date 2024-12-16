@@ -59,7 +59,7 @@ export const products = [
 
 
 
-export const getProductById = (id:number) => {
+export default function getProductById(id:number) {
     return products.find((product) => {
         return product.id === id
     })

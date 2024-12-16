@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/router";
-import { getProductById } from "@/app/data/page";
 import { useState } from "react";
+import getProductById from "@/app/data/page";
 import Image from "next/image";
 import Link from "next/link";
 
