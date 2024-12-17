@@ -39,23 +39,23 @@ export default function Home() {
         <div className="second-sec lg:flex lg:flex-wrap lg:justify-between lg:gap-5 lg:px-[80px] bg-white pt-[53px] px-[24px] pb-[45px]">
           <h1 className="mb-[49px] text-[20px] lg:w-[100vw] lg:block lg:text-center">What makes our brand different</h1>
           <div className="lg:w-[220px]">
-            <Image className="mb-[24px]" src="/Delivery.png" alt="" width={24} height={24}/>
-            <h2 className="mb-[22px] text-[16px]">Next day as standard</h2>
+            <Image className="mb-[20px]" src="/Delivery.png" alt="" width={24} height={24}/>
+            <h2 className="mb-[16px] text-[16px]">Next day as standard</h2>
             <h3 className="mb-[41px] text-[14px]">Order before 3pm and get your order the next day as standard</h3>
           </div>
           <div className="lg:w-[220px]">
-            <Image className="mb-[24px]" src="/Checkmark.png" alt="" width={24} height={24}/>
-            <h2 className="mb-[22px] text-[16px]">Made by true artisans</h2>
+            <Image className="mb-[20px]" src="/Checkmark.png" alt="" width={24} height={24}/>
+            <h2 className="mb-[16px] text-[16px]">Made by true artisans</h2>
             <h3 className="mb-[41px] text-[14px]">Handmade crafted goods made with real passion and craftmanship</h3>
           </div>
           <div className="lg:w-[220px]">
-            <Image className="mb-[24px]" src="/Purchase.png" alt="" width={24} height={24}/>
-            <h2 className="mb-[22px] text-[16px]">Unbeatable prices</h2>
+            <Image className="mb-[20px]" src="/Purchase.png" alt="" width={24} height={24}/>
+            <h2 className="mb-[16px] text-[16px]">Unbeatable prices</h2>
             <h3 className="mb-[41px] text-[14px]">For our materials and quality you won’t find better prices anywhere</h3>
           </div>
           <div className="lg:w-[220px]">
-            <Image className="mb-[24px]" src="/Sprout.png" alt="" width={24} height={24}/>
-            <h2 className="mb-[22px] text-[16px]">Recycled packaging</h2>
+            <Image className="mb-[20px]" src="/Sprout.png" alt="" width={24} height={24}/>
+            <h2 className="mb-[16px] text-[16px]">Recycled packaging</h2>
             <h3 className="text-[14px]">We use 100% recycled packaging to ensure our footprint is manageable</h3>
           </div>
         </div>
