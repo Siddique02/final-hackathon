@@ -4,6 +4,20 @@ import { useState } from "react";
 import { getProductById } from "@/app/data/page";
 import Image from "next/image";
 import Link from "next/link";
+import Accounts from "@/components/svgs/Accounts";
+import Cart from "@/components/svgs/Cart";
+import Delivery from "@/components/svgs/Delivery";
+import DropDown from "@/components/svgs/DropDown";
+import Search from "@/components/svgs/Search";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 
 export default function ProductDetails({ params }: { params: { id: number } }) {
   const [count, setCount] = useState(1);
@@ -21,7 +35,51 @@ export default function ProductDetails({ params }: { params: { id: number } }) {
 
   return (
     <div>
-      <div className="first-sec lg:flex">
+
+
+      <div>
+      <div className="bg-[#2A254B] min-h-[54px] text-white text-xs py-2 px-[16px] flex items-center gap-4">
+        <Delivery />
+        <h4>Free delivery on all orders over £50 with code easter checkout</h4>
+        <span>X</span>
+      </div>
+
+      <div className="flex justify-between h-[69px] bg-white px-6">
+        <div className="flex items-center text-xl">
+          <h1>Avion</h1>
+        </div>
+        <div className="flex justify-center items-center gap-[23px]">
+          <Search />
+          <Link href="/shoppingBasket"><Cart /></Link>
+          <Accounts />
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <DropDown />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel></DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <Link href="/about">
+                <DropdownMenuItem>About Us</DropdownMenuItem>
+              </Link>
+              <DropdownMenuItem>Contact</DropdownMenuItem>
+              <DropdownMenuItem>Blog</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Plant pots</DropdownMenuItem>
+              <DropdownMenuItem>Ceramics</DropdownMenuItem>
+              <DropdownMenuItem>Tables</DropdownMenuItem>
+              <DropdownMenuItem>Chairs</DropdownMenuItem>
+              <DropdownMenuItem>Crockery</DropdownMenuItem>
+              <DropdownMenuItem>Tableware</DropdownMenuItem>
+              <DropdownMenuItem>Cutlery</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
+      </div>
+
+
+      <div className="lg:flex">
         <div className="aspect-square bg-gray-100 w-full bg-cover bg-center">
           <Image
             className="lg:w-[721px] lg:h-[759px]"
@@ -92,7 +150,7 @@ export default function ProductDetails({ params }: { params: { id: number } }) {
       >
         <h2 className="mb-[25px] text-[20px] lg:text-[32px] block">You might also like</h2>
         <div className="flex flex-wrap justify-center gap-4">
-          <Link href={`/products/${product.id}`}>
+          <Link href={`/products/${product?.id}`}>
             <div>
               <Image
                 className="mb-[33px] lg:w-[305px] lg:h-[375px]"

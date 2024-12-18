@@ -58,67 +58,30 @@ export default function Products() {
         </div>
       </div>
 
-      {products.map((product) => {
-        return (
-          <div key={product.id} className="second-sec px-[24px] pt-[45px] pb-[38px]">
-            <h2 className="mb-[25px] text-[20px] block">You might also like</h2>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href={`/products/${product.id}`}>
-                <div>
-                  <Image
-                    className="mb-[33px]"
-                    src="/Photo1.png"
-                    alt=""
-                    width={163}
-                    height={201}
-                  />
-                  <h2 className="mb-[22px]">Rustic Vase Set</h2>
-                  <h3>£155</h3>
-                </div>
-              </Link>
-              <div>
-                <Image
-                  className="mb-[33px]"
-                  src="/Photo2.png"
-                  alt=""
-                  width={163}
-                  height={201}
-                />
-                <h2 className="mb-[22px]">Rustic Vase Set</h2>
-                <h3>£155</h3>
+      <div className="second-sec px-[24px] pt-[45px] pb-[38px]">
+        <h2 className="mb-[25px] text-[20px] block">All products</h2>
+        <div className="flex flex-wrap justify-center gap-4">
+          {products.map((product) => {
+            return (
+              <div key={product.id}>
+                <Link href={`/products/${product.id}`}>
+                  <div>
+                    <Image
+                      className="mb-[33px]"
+                      src={product.image}
+                      alt=""
+                      width={163}
+                      height={201}
+                    />
+                    <h2 className="mb-[22px]">{product.title}</h2>
+                    <h3>{product.price}</h3>
+                  </div>
+                </Link>
               </div>
-              <div>
-                <Image
-                  className="mb-[33px]"
-                  src="/Photo3.png"
-                  alt=""
-                  width={163}
-                  height={201}
-                />
-                <h2 className="mb-[22px]">Rustic Vase Set</h2>
-                <h3>£155</h3>
-              </div>
-              <div>
-                <Image
-                  className="mb-[33px]"
-                  src="/Photo4.png"
-                  alt=""
-                  width={163}
-                  height={201}
-                />
-                <h2 className="mb-[22px]">Rustic Vase Set</h2>
-                <h3 className="mb-[36px]">£155</h3>
-              </div>
-            </div>
-            <div>
-              <button className="w-[100%] flex justify-center items-center hover:bg-[#4a4566] h-[56px] mt-[32px]">
-                View collection
-              </button>
-            </div>
-          </div>
-        );
-      })}
-
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
