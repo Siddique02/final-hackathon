@@ -31,7 +31,7 @@ export default function Products() {
         </div>
         <div className="flex justify-center items-center gap-[23px]">
           <Search />
-          <Cart />
+          <Link href="/shoppingBasket"><Cart /></Link>
           <Accounts />
           <DropdownMenu>
             <DropdownMenuTrigger>
@@ -67,7 +67,7 @@ export default function Products() {
                 <Link href={`/products/${product.id}`}>
                   <div>
                     <Image
-                      className="mb-[33px]"
+                      className="mb-[33px] lg:w-[305px] lg:h-[375px]"
                       src={product.image}
                       alt=""
                       width={163}
