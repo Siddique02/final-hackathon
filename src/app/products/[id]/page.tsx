@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { products } from "@/app/data/page";
+import getProductById from "@/app/data/page";
 import Image from "next/image";
 import Link from "next/link";
 import Delivery from "@/components/svgs/Delivery";
@@ -25,13 +25,6 @@ export default function ProductDetails({ params }: { params: { id: number } }) {
   const decrement = () => {
     setCount(count - 1);
   };
-
-
-  function getProductById(id:number) {
-    return products.find((product) => {
-        return product.id === id
-    })
-  }
 
   const id = params.id;
 
