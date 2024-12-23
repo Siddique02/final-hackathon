@@ -15,9 +15,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useCart } from "@/context/page";
+import { useParams } from "next/navigation";
 
-export default function ProductDetails({ params }: { params: { id: number } }) {
+export default function ProductDetails() {
   const [count, setCount] = useState(1);
+  const { addToCart } = useCart();
+  const params = useParams();
+  
 
   const increment = () => {
     setCount(count + 1);
@@ -29,6 +34,12 @@ export default function ProductDetails({ params }: { params: { id: number } }) {
   const id = params.id;
 
   const product = getProductById(Number(id));
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product);
+    }
+  };
 
   return (
     <div>
@@ -161,7 +172,7 @@ export default function ProductDetails({ params }: { params: { id: number } }) {
               <button onClick={increment}>+</button>
             </div>
 
-            <button className="w-full bg-[#2A254B] text-white py-3 text-sm lg:w-[143px] lg:py-[20px] lg:inline">
+            <button onClick={handleAddToCart} className="w-full bg-[#2A254B] text-white py-3 text-sm lg:w-[143px] lg:py-[20px] lg:inline">
               Add to cart
             </button>
           </div>
