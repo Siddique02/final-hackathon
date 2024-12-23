@@ -14,7 +14,7 @@ import Link from "next/link";
 import Accounts from "@/components/svgs/Accounts";
 import Cart from "@/components/svgs/Cart";
 import Delivery from "@/components/svgs/Delivery";
-import { products } from "@/app/data/page";
+import { products } from "@/data/page";
 
 export default function Products() {
   return (

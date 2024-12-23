@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import getProductById from "@/app/data/page";
+import getProductById from "@/data/page";
 import Image from "next/image";
 import Link from "next/link";
 import Delivery from "@/components/svgs/Delivery";
