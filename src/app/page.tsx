@@ -29,7 +29,7 @@ export default function Home() {
             <p className="text-[18px] font-extralight mt-[97px] lg:absolute lg:bottom-10 lg:px-[60px]">A new era in eco friendly furniture with Avelon, the French luxury retail brand with nice fonts, tasteful colors and a beautiful way to display things digitally using modern web technologies.</p>
             <Link href="/products"><button className="w-[100%] lg:ml-[60px] lg:w-[170px] flex justify-center items-center bg-[#4a4566] h-[56px] mt-[32px]">View collection</button></Link>
           </div>
-          <div>
+          <div className="h-[100%]">
             <Image className="hidden lg:flex lg:justify-end" src="/photo4.png" alt="" width={520} height={584}/>
           </div>
         </div>
