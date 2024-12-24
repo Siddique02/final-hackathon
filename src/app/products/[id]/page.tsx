@@ -115,7 +115,7 @@ export default function ProductDetails() {
       </div>
 
       <div className="lg:flex">
-        <div className="aspect-square bg-gray-100 w-full bg-cover bg-center">
+        {product && <div className="aspect-square bg-gray-100 w-full bg-cover bg-center">
           <Image
             className="lg:w-[721px] lg:h-[759px]"
             src={product.image}
@@ -123,7 +123,7 @@ export default function ProductDetails() {
             width={390}
             height={380}
           />
-        </div>
+        </div>}
 
         <div className="space-y-4 px-[24px] pb-[30px] pt-[20px] lg:w-[50%] lg:px-[100px] lg:pt-[90px]">
           <div className="flex flex-col justify-between items-start">
