@@ -30,7 +30,7 @@ export default function Home() {
             <Link href="/products"><button className="w-[100%] lg:ml-[60px] lg:w-[170px] flex justify-center items-center bg-[#4a4566] h-[56px] mt-[32px]">View collection</button></Link>
           </div>
           <div className="h-[100%]">
-            <Image className="hidden lg:flex lg:justify-end" src="/photo4.png" alt="" width={520} height={584}/>
+            <Image className="hidden lg:flex lg:justify-end" src="/Product3.png" alt="" width={520} height={584}/>
           </div>
         </div>
 
@@ -66,22 +66,22 @@ export default function Home() {
           <h2 className="mb-[25px] text-[20px] lg:text-[32px] block">New ceramics</h2>
           <div className="flex flex-wrap justify-center sm:justify-start gap-4">
             <div>
-              <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Photo1.png" alt="" width={163} height={201}/>
+              <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Product7.png" alt="" width={163} height={201}/>
               <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
               <h3 className="lg:text-[20px]">£155</h3>
             </div>
             <div>
-              <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Photo2.png" alt="" width={163} height={201}/>
+              <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Product4.png" alt="" width={163} height={201}/>
               <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
               <h3 className="lg:text-[20px]">£155</h3>
             </div>
             <div>
-              <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Photo3.png" alt="" width={163} height={201}/>
+              <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Product10.png" alt="" width={163} height={201}/>
               <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
               <h3 className="lg:text-[20px]">£155</h3>
             </div>
             <div>
-              <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Photo4.png" alt="" width={163} height={201}/>
+              <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Product3.png" alt="" width={163} height={201}/>
               <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
               <h3 className="mb-[36px] lg:text-[20px]">£155</h3>
             </div>
