@@ -97,25 +97,25 @@ export default function Home() {
           <h1 className="mb-[36px] lg:mb-0 text-[20px] lg:text-[32px]">Our popular products</h1>
           <div className="forth-sec-cards lg:flex lg:flex-wrap flex flex-shrink-0 gap-5 pt-[20px] overflow-x-auto">
             <div className="forth-sec-card1 relative flex-shrink-0">
-              <Image className="mb-[30px] lg:hidden" src="/Photo2.png" alt="" width={200} height={251}/>
+              <Image className="mb-[30px] lg:hidden" src="/Product7.png" alt="" width={200} height={251}/>
               <Image className="mb-[30px] hidden lg:flex" src="/Large.png" alt="" width={630} height={375}/>
               <h1 className="mb-[10px]">The Lucy Lamp</h1>
               <h2>£399</h2>
             </div>
             <div className="forth-sec-card2 relative flex-shrink-0">
-              <Image className="mb-[30px] lg:hidden" src="/Photo1.png" alt="" width={200} height={251}/>
-              <Image className="mb-[30px] hidden lg:flex" src="/Photo4.png" alt="" width={305} height={375}/>
+              <Image className="mb-[30px] lg:hidden" src="/Product4.png" alt="" width={200} height={251}/>
+              <Image className="mb-[30px] hidden lg:flex" src="/Product3.png" alt="" width={305} height={375}/>
               <h1 className="mb-[10px]">The Lucy Lamp</h1>
               <h2>£399</h2>
             </div>
             <div className="forth-sec-card3 relative flex-shrink-0">
-              <Image className="mb-[30px] lg:hidden" src="/Photo3.png" alt="" width={200} height={251}/>
-              <Image className="mb-[30px] hidden lg:flex" src="/Parent.png" alt="" width={305} height={375}/>
+              <Image className="mb-[30px] lg:hidden" src="/Product3.png" alt="" width={200} height={251}/>
+              <Image className="mb-[30px] hidden lg:flex" src="/Product6.png" alt="" width={305} height={375}/>
               <h1 className="mb-[10px]">The Lucy Lamp</h1>
               <h2>£399</h2>
             </div>
             <div className="forth-sec-card4 relative flex-shrink-0">
-              <Image className="mb-[30px] lg:hidden" src="/Photo4.png" alt="" width={200} height={251}/>
+              <Image className="mb-[30px] lg:hidden" src="/Product5.png" alt="" width={200} height={251}/>
               <h1 className="mb-[10px] lg:hidden">The Lucy Lamp</h1>
               <h2 className="lg:hidden">£399</h2>
             </div>

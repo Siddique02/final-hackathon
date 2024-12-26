@@ -58,22 +58,22 @@ export default function Products() {
         </div>
       </div>
 
-      <div className="second-sec px-[24px] pt-[45px] pb-[38px]">
-        <h2 className="mb-[25px] text-[20px] block">All products</h2>
-        <div className="flex flex-wrap justify-center gap-4">
+      <div className="second-sec px-[24px] pt-[45px] pb-[38px] lg:px-[80px]">
+        <h2 className="mb-[25px] text-[20px] block ">All products</h2>
+        <div className="flex flex-wrap justify-center sm:justify-between gap-4">
           {products.map((product) => {
             return (
               <div key={product.id}>
                 <Link href={`/products/${product.id}`}>
                   <div>
                     <Image
-                      className="mb-[33px] lg:w-[305px] lg:h-[375px]"
+                      className="mb-[10px] lg:w-[305px] lg:h-[375px]"
                       src={product.image}
                       alt=""
                       width={163}
                       height={201}
                     />
-                    <h2 className="mb-[22px]">{product.title}</h2>
+                    <h2>{product.title}</h2>
                     <h3>{product.price}</h3>
                   </div>
                 </Link>
