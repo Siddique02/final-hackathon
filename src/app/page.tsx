@@ -64,7 +64,7 @@ export default function Home() {
 
         <div className="third-sec px-[24px] lg:px-[80px] pt-[45px] pb-[38px]">
           <h2 className="mb-[25px] text-[20px] lg:text-[32px] block">New ceramics</h2>
-          <div className="flex flex-wrap justify-center sm:justify-start gap-4">
+          <div className="flex flex-wrap justify-center sm:justify-between gap-4">
             <div>
               <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Product7.png" alt="" width={163} height={201}/>
               <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
@@ -72,17 +72,17 @@ export default function Home() {
             </div>
             <div>
               <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Product4.png" alt="" width={163} height={201}/>
-              <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
+              <h2 className="mb-[22px] lg:text-[20px]">The Lucy Lamp</h2>
               <h3 className="lg:text-[20px]">£155</h3>
             </div>
             <div>
               <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Product10.png" alt="" width={163} height={201}/>
-              <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
+              <h2 className="mb-[22px] lg:text-[20px]">The Silky Vase</h2>
               <h3 className="lg:text-[20px]">£155</h3>
             </div>
             <div>
               <Image className="mb-[33px] lg:w-[305px] lg:h-[375px]" src="/Product3.png" alt="" width={163} height={201}/>
-              <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
+              <h2 className="mb-[22px] lg:text-[20px]">The Dandy chair</h2>
               <h3 className="mb-[36px] lg:text-[20px]">£155</h3>
             </div>
           </div>
@@ -99,19 +99,19 @@ export default function Home() {
             <div className="forth-sec-card1 relative flex-shrink-0">
               <Image className="mb-[30px] lg:hidden" src="/Product7.png" alt="" width={200} height={251}/>
               <Image className="mb-[30px] hidden lg:flex" src="/Large.png" alt="" width={630} height={375}/>
-              <h1 className="mb-[10px]">The Lucy Lamp</h1>
+              <h1 className="mb-[10px]">The Poplar suede sofa</h1>
               <h2>£399</h2>
             </div>
             <div className="forth-sec-card2 relative flex-shrink-0">
               <Image className="mb-[30px] lg:hidden" src="/Product4.png" alt="" width={200} height={251}/>
               <Image className="mb-[30px] hidden lg:flex" src="/Product3.png" alt="" width={305} height={375}/>
-              <h1 className="mb-[10px]">The Lucy Lamp</h1>
+              <h1 className="mb-[10px]">The Dandy chair</h1>
               <h2>£399</h2>
             </div>
             <div className="forth-sec-card3 relative flex-shrink-0">
               <Image className="mb-[30px] lg:hidden" src="/Product3.png" alt="" width={200} height={251}/>
               <Image className="mb-[30px] hidden lg:flex" src="/Product6.png" alt="" width={305} height={375}/>
-              <h1 className="mb-[10px]">The Lucy Lamp</h1>
+              <h1 className="mb-[10px]">The Dandy chair</h1>
               <h2>£399</h2>
             </div>
             <div className="forth-sec-card4 relative flex-shrink-0">
