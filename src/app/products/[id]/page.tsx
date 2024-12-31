@@ -115,9 +115,9 @@ export default function ProductDetails() {
       </div>
 
       <div className="lg:flex">
-        {product && <div className="aspect-square bg-gray-100 w-full bg-cover bg-center">
+        {product && <div className="aspect-square bg-gray-100 bg-cover bg-center">
           <Image
-            className="lg:w-[721px] lg:h-[759px]"
+            className="w-[100%] lg:w-[721px] lg:h-[759px]"
             src={product.image}
             alt=""
             width={390}
@@ -125,7 +125,7 @@ export default function ProductDetails() {
           />
         </div>}
 
-        <div className="space-y-4 px-[24px] pb-[30px] pt-[20px] lg:w-[50%] lg:px-[100px] lg:pt-[90px]">
+        <div className="space-y-4 px-[24px] pb-[30px] pt-[20px] lg:w-[50%] lg:px-[80px] lg:pt-[90px]">
           <div className="flex flex-col justify-between items-start">
             <h2 className="text-lg font-medium lg:text-[36px]">
               {product?.title}
@@ -163,16 +163,17 @@ export default function ProductDetails() {
             </div>
           </div>
 
-          <div className="space-y-4 lg:space-y-0 lg:pt-[40px] lg:flex lg:items-center lg:justify-between">
-            <div className="flex items-center space-x-4 lg:inline">
-              <label className="text-sm lg:hidden">Quantity:</label>
-              <span className="hidden lg:inline-flex text-[16px]">Amount:</span>
-              <button onClick={decrement}>-</button>
-              <button>{count}</button>
-              <button onClick={increment}>+</button>
+          <div className="space-y-4 lg:space-y-0 lg:pt-[40px] lg:flex lg:flex-col xl:flex xl:flex-row xl:justify-between xl:items-center">
+            <div className="flex flex-col space-x-4 lg:mb-6 lg:flex lg:flex-row">
+              <span className="text-[16px]">Quantity:</span>
+              <div className="flex justify-center space-x-10">
+                <button onClick={decrement}>-</button>
+                <button>{count}</button>
+                <button onClick={increment}>+</button>
+              </div>
             </div>
 
-            <button onClick={handleAddToCart} className="w-full bg-[#2A254B] text-white py-3 text-sm lg:w-[143px] lg:py-[20px] lg:inline">
+            <button onClick={handleAddToCart} className="w-full bg-[#2A254B] text-white py-3 text-sm lg:w-[143px] lg:py-[20px]">
               Add to cart
             </button>
           </div>
