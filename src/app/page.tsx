@@ -1,12 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
+import { GetProductData } from "@/sanity/sanity.query";
+import CustomCard from "@/components/card";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div>
       <Navbar/>
-
 
       <div className="header hidden lg:flex lg:justify-center lg:mb-16 lg:mt-5">
         <ul className="flex gap-8 text-[16px] text-[#0000006b]">

@@ -19,10 +19,14 @@ import { products } from "@/data/page";
 export default function Products() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-[#2A254B] min-h-[54px] text-white text-xs py-2 px-[16px] flex items-center gap-4">
-        <Delivery />
-        <h4>Free delivery on all orders over £50 with code easter checkout</h4>
-        <span>X</span>
+      <div className="bg-[#2A254B] min-h-[54px] text-white text-xs py-2 px-[16px] flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <Delivery />
+          <h4>
+            Free delivery on all orders over £50 with code easter checkout
+          </h4>
+        </div>
+        <button>X</button>
       </div>
 
       <div className="flex justify-between h-[69px] bg-white px-6">
@@ -31,7 +35,9 @@ export default function Products() {
         </div>
         <div className="flex justify-center items-center gap-[23px]">
           <Search />
-          <Link href="/shoppingBasket"><Cart /></Link>
+          <Link href="/shoppingBasket">
+            <Cart />
+          </Link>
           <Accounts />
           <DropdownMenu>
             <DropdownMenuTrigger>

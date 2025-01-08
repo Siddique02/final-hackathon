@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Delivery from "@/components/svgs/Delivery";
 import DropDown from "@/components/svgs/DropDown";
-import Search from "@/components/svgs/Search";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,21 +15,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useCart } from "@/context/page";
+import { useQuantityCount } from "@/context/page";
 import { useParams } from "next/navigation";
 
 export default function ProductDetails() {
-  const [count, setCount] = useState(1);
   const { addToCart } = useCart();
+  const { count, increment, decrement } = useQuantityCount();
+
   const params = useParams();
-  
-
-  const increment = () => {
-    setCount(count + 1);
-  };
-  const decrement = () => {
-    setCount(count - 1);
-  };
-
   const id = params.id;
 
   const product = getProductById(Number(id));
@@ -41,15 +33,28 @@ export default function ProductDetails() {
     }
   };
 
+  const disableDecrement = () => {
+    if(count <= 1){
+      return true;
+    }
+  }
+  const disableIncrement = () => {
+    if(count >= 10){
+      return true;
+    }
+  }
+
   return (
     <div>
       <div>
-        <div className="bg-[#2A254B] min-h-[54px] text-white text-xs py-2 px-[16px] flex items-center gap-4">
-          <Delivery />
-          <h4>
-            Free delivery on all orders over £50 with code easter checkout
-          </h4>
-          <span>X</span>
+        <div className="bg-[#2A254B] min-h-[54px] text-white text-xs py-2 px-[16px] flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <Delivery />
+            <h4>
+              Free delivery on all orders over £50 with code easter checkout
+            </h4>
+          </div>
+          <button>X</button>
         </div>
 
         <div className="flex justify-between h-[69px] bg-white px-6">
@@ -57,7 +62,9 @@ export default function ProductDetails() {
             <h1>Avion</h1>
           </div>
           <div className="flex justify-center items-center gap-[23px]">
-            <Search />
+            <svg className="search-btn" width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.6725 16.6412L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
             <div className="lg:flex">
               <Link href="/shoppingBasket">
                 <svg
@@ -167,9 +174,9 @@ export default function ProductDetails() {
             <div className="flex flex-col space-x-4 lg:mb-6 lg:flex lg:flex-row">
               <span className="text-[16px]">Quantity:</span>
               <div className="flex justify-center space-x-10">
-                <button onClick={decrement}>-</button>
+                <button disabled={disableDecrement()} onClick={decrement}>-</button>
                 <button>{count}</button>
-                <button onClick={increment}>+</button>
+                <button disabled = {disableIncrement()} onClick={increment}>+</button>
               </div>
             </div>
 
