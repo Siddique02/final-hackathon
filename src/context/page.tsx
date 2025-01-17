@@ -1,12 +1,46 @@
 "use client"
 
-import { Product } from "@/data/page";
-import { createContext, useContext, useState, ReactNode } from "react";
+import Product from "@/types/page";
+import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import GetProductData from "@/sanityData/page";
 
 
+// Product Context
+const ProductContext = createContext<Product[]>([]);
+
+export const ProductProvider = ({ children }: { children: ReactNode }) => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const data = await GetProductData();
+      setProducts(data);
+    }
+    fetchProducts();
+  }, []);
+
+  return (
+    <ProductContext.Provider value={products}>
+      {children}
+    </ProductContext.Provider>
+  );
+}
+
+export const useProducts = () => {
+  const products = useContext(ProductContext);
+  if (!products) {
+    throw new Error("useProducts must be used within a ProductProvider");
+  }
+  return products;
+}
+
+
+
+
+// Cart Context
 interface CartContextType {
   cart: Product[];
-  addToCart: (product: Product,) => void;
+  addToCart: (product: Product) => void;
   deleteFromCart: (id: number) => void;
 }
 
@@ -30,7 +64,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-
 export const useCart = () => {
   const cartContext = useContext(CartContext);
   if (!cartContext) {
@@ -43,7 +76,6 @@ export const useCart = () => {
 
 
 // count quantity context
-
 interface CountContextType {
   count: number;
   increment: () => void;

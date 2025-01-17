@@ -37,7 +37,7 @@ export default function Footer() {
           <h3 className="mb-[15px]">Join our mailing list</h3>
           <div className="w-[100%] mb-[16px] flex h-[55px]">
             <input
-              className="lg:w-[80%] lg:flex-shrink py-[16px] pl-[20px] pr-[40px] bg-[#4b4666]"
+              className="lg:w-[80%] w-full lg:flex-shrink py-[16px] pl-[20px] pr-[40px] bg-[#4b4666]"
               type="email"
               placeholder="your@email.com"
             />

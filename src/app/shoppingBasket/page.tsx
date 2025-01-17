@@ -10,6 +10,8 @@ export default function Basket() {
 
     const { cart, deleteFromCart } = useCart();
     const { count, increment, decrement } = useQuantityCount();
+    
+    const subTotal = cart.reduce((total, product) => total + Number(product.price), 0) * count
 
 
     return(
@@ -18,15 +20,21 @@ export default function Basket() {
             <div className="pt-[30px] px-[24px] flex flex-col gap-7">
                 <h1 className="text-[24px] mb-[10px]">Your shopping cart</h1>
                 {cart.map((product) => (
-                <div key={product.id} className="flex gap-6">
-                    <Image className="w-[133px] h-[166px]" src={product.image} alt="" width={133} height={166}/>
-                    <div>
-                        <h1 className="mb-[10px]">{product.title}</h1>
-                        <h2 className="mb-[10px]">{product.description}</h2>
-                        <h2 className="mb-[10px]">{product.price}</h2>
-                        <button className="mr-[50px] ml-[50px]" onClick={decrement}>-</button>
-                        <button className="mr-[50px]">{count}</button>
-                        <button onClick={increment}>+</button>
+                <div key={product.id} className="flex justify-between gap-6 pr-4">
+                    <div className="flex-shrink-0">
+                        <Image className="h-[100%] w-[100%]" src={product.image} alt="" width={133} height={166}/>
+                    </div>
+                    <div className="flex flex-col items-start justify-between py-5">
+                            <div>
+                                <h1 className="mb-[10px]">{product.name}</h1>
+                                <h2 className="mb-[10px]">{product.description}</h2>
+                                <h2 className="mb-[10px]">${product.price}</h2>
+                            </div>
+                        <div className="flex justify-between rounded-full bg-slate-300 px-6 py-2 space-x-10">
+                            <button onClick={decrement}>-</button>
+                            <button>{count}</button>
+                            <button onClick={increment}>+</button>
+                        </div>
                     </div>
                     <div className="flex justify-center items-center">
                         <button className="bg-red-700 p-[7px] rounded-md hover:bg-red-600 hover:scale-90" onClick={() => deleteFromCart(product.id)}>🗑️</button>
@@ -37,7 +45,7 @@ export default function Basket() {
             <div className="px-[24px] mb-[30px]">
                 <div className="flex justify-end gap-5">
                     <h1 className="text-[20px]">Subtotal</h1>
-                    <h1 className="text-[20px]">£210</h1>
+                    <h1 className="text-[20px]">{subTotal}</h1>
                 </div>
                 <p className="text-right text-[14px]">Taxes and shipping are calculated at checkout</p>
             </div>

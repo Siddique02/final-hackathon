@@ -1,11 +1,12 @@
 import { createClient, type ClientConfig } from "next-sanity";
 
 
+
 const SanityClient: ClientConfig = {
-    projectId: "zbqefj13",
+    projectId: "e9azbf1r",
     dataset: "production",
     useCdn: false,
-    apiVersion: "2024-12-22",
+    apiVersion: "2022-03-07",
 }
 
 export default createClient(SanityClient);

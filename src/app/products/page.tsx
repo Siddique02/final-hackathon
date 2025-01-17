@@ -14,20 +14,41 @@ import Link from "next/link";
 import Accounts from "@/components/svgs/Accounts";
 import Cart from "@/components/svgs/Cart";
 import Delivery from "@/components/svgs/Delivery";
-import { products } from "@/data/page";
+// import { products } from "@/data/page";
+import { useEffect, useState } from "react";
+import { GetProductData } from "@/sanity/sanity.query";
+import Product from "@/types/page";
+
 
 export default function Products() {
+  useEffect(()=>{
+    const fetchData = async () => {
+      const products = await GetProductData()
+      setProducts(products)
+    }
+    fetchData()
+  }, [])
+  const [products, setProducts] = useState<Product[]>([])
+  console.log(products);
+
+  const [isOpen, setIsOpen] = useState(true)
+  const closeDialog = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-[#2A254B] min-h-[54px] text-white text-xs py-2 px-[16px] flex items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <Delivery />
-          <h4>
-            Free delivery on all orders over £50 with code easter checkout
-          </h4>
+      {isOpen && 
+        <div className="topOne bg-[#2A254B] min-h-[54px] text-white text-xs py-2 px-[16px] flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <Delivery />
+            <h4>
+              Free delivery on all orders over £50 with code easter checkout
+            </h4>
+          </div>
+          <button onClick={closeDialog}>X</button>
         </div>
-        <button>X</button>
-      </div>
+      }
 
       <div className="flex justify-between h-[69px] bg-white px-6">
         <div className="flex items-center text-xl">
@@ -74,13 +95,13 @@ export default function Products() {
                   <div>
                     <Image
                       className="mb-[10px] lg:w-[305px] lg:h-[375px]"
-                      src={product.image}
+                      src={product?.image}
                       alt=""
                       width={163}
                       height={201}
                     />
-                    <h2>{product.title}</h2>
-                    <h3>{product.price}</h3>
+                    <h2 className="w-[163px] lg:w-[305px]">{product.name}</h2>
+                    <h3>${product.price}</h3>
                   </div>
                 </Link>
               </div>

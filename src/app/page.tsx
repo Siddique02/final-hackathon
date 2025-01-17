@@ -1,10 +1,13 @@
 import Navbar from "@/components/Navbar";
+import { GetProductData } from "@/sanity/sanity.query";
 import Image from "next/image";
 import Link from "next/link";
-import { GetProductData } from "@/sanity/sanity.query";
-import CustomCard from "@/components/card";
 
 export default async function Home() {
+
+  // const sanityProducts = await GetProductData();
+  // console.log(sanityProducts);
+
   return (
     <div>
       <Navbar/>

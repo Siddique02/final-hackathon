@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import getProductById from "@/data/page";
 import Image from "next/image";
 import Link from "next/link";
 import Delivery from "@/components/svgs/Delivery";
@@ -17,19 +15,49 @@ import {
 import { useCart } from "@/context/page";
 import { useQuantityCount } from "@/context/page";
 import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { GetProductData } from "@/sanity/sanity.query";
+import Product from "@/types/page";
 
 export default function ProductDetails() {
-  const { addToCart } = useCart();
+  const { cart, addToCart } = useCart();
   const { count, increment, decrement } = useQuantityCount();
+
+  const [isOpen, setIsOpen] = useState(true)
+
+  useEffect(()=>{
+      const fetchData = async () => {
+        const products = await GetProductData()
+        setProducts(products)
+      }
+      fetchData()
+    }, [])
+    const [products, setProducts] = useState<Product[]>([])
+  
+  const closeDialog = () => {
+    setIsOpen(false);
+  };
 
   const params = useParams();
   const id = params.id;
 
+  const getProductById = (id: number) => {
+    return products.find((product) => {
+      return product.id === id
+    })
+  }
   const product = getProductById(Number(id));
+  
+  const productIsInCart = (id: number) => {
+    return cart.find((product) => product.id === id)
+  }
 
   const handleAddToCart = () => {
-    if (product) {
-      addToCart(product);
+    if(productIsInCart(Number(id))){
+      alert("Product is already in your cart")
+    }
+    else if(product){
+      addToCart(product)
     }
   };
 
@@ -47,15 +75,17 @@ export default function ProductDetails() {
   return (
     <div>
       <div>
-        <div className="bg-[#2A254B] min-h-[54px] text-white text-xs py-2 px-[16px] flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <Delivery />
-            <h4>
-              Free delivery on all orders over £50 with code easter checkout
-            </h4>
+        {isOpen && 
+          <div className="bg-[#2A254B] min-h-[54px] text-white text-xs py-2 px-[16px] flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <Delivery />
+              <h4>
+                Free delivery on all orders over £50 with code easter checkout
+              </h4>
+            </div>
+            <button onClick={closeDialog}>X</button>
           </div>
-          <button>X</button>
-        </div>
+        }
 
         <div className="flex justify-between h-[69px] bg-white px-6">
           <div className="flex items-center text-xl">
@@ -135,10 +165,10 @@ export default function ProductDetails() {
         <div className="space-y-4 px-[24px] pb-[30px] pt-[20px] lg:w-[50%] lg:px-[80px] lg:pt-[90px]">
           <div className="flex flex-col justify-between items-start">
             <h2 className="text-lg font-medium lg:text-[36px]">
-              {product?.title}
+              {product?.name}
             </h2>
             <h3 className="text-lg mt-[10px] lg:text-[24px]">
-              {product?.price}
+              ${product?.price}
             </h3>
           </div>
 
@@ -171,9 +201,9 @@ export default function ProductDetails() {
           </div>
 
           <div className="space-y-4 lg:space-y-0 lg:pt-[40px] lg:flex lg:flex-col xl:flex xl:flex-row xl:justify-between xl:items-center">
-            <div className="flex flex-col space-x-4 lg:mb-6 lg:flex lg:flex-row">
+            <div className="flex flex-col items-center space-x-4 lg:mb-6 lg:flex lg:flex-row">
               <span className="text-[16px]">Quantity:</span>
-              <div className="flex justify-center space-x-10">
+              <div className="flex justify-center rounded-full bg-slate-300 px-6 py-2 space-x-10">
                 <button disabled={disableDecrement()} onClick={decrement}>-</button>
                 <button>{count}</button>
                 <button disabled = {disableIncrement()} onClick={increment}>+</button>
