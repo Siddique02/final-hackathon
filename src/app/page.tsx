@@ -99,7 +99,7 @@ export default async function Home() {
 
         <div className="forth-sec px-[24px] lg:px-[80px] pt-[53px] pb-[40px] text-[20px]">
           <h1 className="mb-[36px] lg:mb-0 text-[20px] lg:text-[32px]">Our popular products</h1>
-          <div className="forth-sec-cards lg:flex lg:flex-wrap flex flex-shrink-0 gap-5 pt-[20px] overflow-x-auto">
+          <div className="forth-sec-cards justify-center sm:flex sm:justify-between lg:flex lg:flex-wrap flex flex-shrink-0 gap-5 pt-[20px]">
             <div className="forth-sec-card1 relative flex-shrink-0">
               <Image className="mb-[30px] lg:hidden" src="/Product7.png" alt="" width={200} height={251}/>
               <Image className="mb-[30px] hidden lg:flex" src="/Large.png" alt="" width={630} height={375}/>
@@ -118,7 +118,7 @@ export default async function Home() {
               <h1 className="mb-[10px]">The Dandy chair</h1>
               <h2>£399</h2>
             </div>
-            <div className="forth-sec-card4 relative flex-shrink-0">
+            <div className="forth-sec-card4 lg:hidden relative flex-shrink-0">
               <Image className="mb-[30px] lg:hidden" src="/Product5.png" alt="" width={200} height={251}/>
               <h1 className="mb-[10px] lg:hidden">The Lucy Lamp</h1>
               <h2 className="lg:hidden">£399</h2>

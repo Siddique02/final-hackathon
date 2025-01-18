@@ -2,7 +2,7 @@
 
 import Product from "@/types/page";
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
-import GetProductData from "@/sanityData/page";
+import { GetProductData } from "@/sanity/sanity.query";
 
 
 // Product Context
@@ -40,6 +40,7 @@ export const useProducts = () => {
 // Cart Context
 interface CartContextType {
   cart: Product[];
+  setCart: (cart: Product[]) => void
   addToCart: (product: Product) => void;
   deleteFromCart: (id: number) => void;
 }
@@ -58,7 +59,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <CartContext.Provider value={{cart, addToCart, deleteFromCart}}>
+    <CartContext.Provider value={{cart, addToCart, setCart, deleteFromCart}}>
       {children}
     </CartContext.Provider>
   );

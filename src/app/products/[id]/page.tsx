@@ -23,19 +23,21 @@ export default function ProductDetails() {
   const { cart, addToCart } = useCart();
   const { count, increment, decrement } = useQuantityCount();
 
-  const [isOpen, setIsOpen] = useState(true)
+  const [isFreeDeliveryOpen, setIsFreeDeliveryOpen] = useState(true);
+  const [productAddedPopUp, setProductAddedPopUp] = useState(false);
+  const [isAlreadyInCart, setIsAlreadyInCart] = useState(false)
 
-  useEffect(()=>{
-      const fetchData = async () => {
-        const products = await GetProductData()
-        setProducts(products)
-      }
-      fetchData()
-    }, [])
-    const [products, setProducts] = useState<Product[]>([])
-  
+  useEffect(() => {
+    const fetchData = async () => {
+      const products = await GetProductData();
+      setProducts(products);
+    };
+    fetchData();
+  }, []);
+  const [products, setProducts] = useState<Product[]>([]);
+
   const closeDialog = () => {
-    setIsOpen(false);
+    setIsFreeDeliveryOpen(false);
   };
 
   const params = useParams();
@@ -43,39 +45,56 @@ export default function ProductDetails() {
 
   const getProductById = (id: number) => {
     return products.find((product) => {
-      return product.id === id
-    })
-  }
+      return product.id === id;
+    });
+  };
   const product = getProductById(Number(id));
-  
+
   const productIsInCart = (id: number) => {
-    return cart.find((product) => product.id === id)
-  }
+    return cart.find((product) => product.id === id);
+  };
 
   const handleAddToCart = () => {
-    if(productIsInCart(Number(id))){
-      alert("Product is already in your cart")
-    }
-    else if(product){
-      addToCart(product)
+    if (productIsInCart(Number(id))) {
+      setIsAlreadyInCart(true)
+      setTimeout(() => {
+        setIsAlreadyInCart(false)
+      }, 3000);
+    } 
+    else if (product) {
+      addToCart(product);
+
+      setProductAddedPopUp(true)
+      setTimeout(() => {
+        setProductAddedPopUp(false)
+      }, 3000);
     }
   };
 
   const disableDecrement = () => {
-    if(count <= 1){
+    if (count <= 1) {
       return true;
     }
-  }
+  };
   const disableIncrement = () => {
-    if(count >= 10){
+    if (count >= 10) {
       return true;
     }
-  }
+  };
 
   return (
     <div>
+        {/* Pop Up msgs */}
+
+        <div className={`fixed bottom-4 right-4 bg-slate-300 border-2 border-slate-600 font-bold px-10 py-4 rounded-lg transition-all duration-500 ease-in-out ${productAddedPopUp? "-translate-y-2": "translate-y-20"}`}>
+          <h1>Product Added To Cart.</h1>
+        </div>
+        <div className={`fixed bottom-4 right-4 bg-slate-300 border-2 border-slate-600 font-bold px-10 py-4 rounded-lg transition-all duration-500 ease-in-out ${isAlreadyInCart? "-translate-y-2": "translate-y-20"}`}>
+          <h1>Product Is Already In Your Cart.</h1>
+        </div>
+
       <div>
-        {isOpen && 
+        {isFreeDeliveryOpen && (
           <div className="bg-[#2A254B] min-h-[54px] text-white text-xs py-2 px-[16px] flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <Delivery />
@@ -85,15 +104,28 @@ export default function ProductDetails() {
             </div>
             <button onClick={closeDialog}>X</button>
           </div>
-        }
+        )}
 
         <div className="flex justify-between h-[69px] bg-white px-6">
           <div className="flex items-center text-xl">
             <h1>Avion</h1>
           </div>
           <div className="flex justify-center items-center gap-[23px]">
-            <svg className="search-btn" width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16.6725 16.6412L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg
+              className="search-btn"
+              width="16px"
+              height="16px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.6725 16.6412L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                stroke="#000000"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
             <div className="lg:flex">
               <Link href="/shoppingBasket">
@@ -152,15 +184,17 @@ export default function ProductDetails() {
       </div>
 
       <div className="lg:flex">
-        {product && <div className="aspect-square bg-gray-100 bg-cover bg-center">
-          <Image
-            className="w-[100%] lg:w-[721px] lg:h-[759px]"
-            src={product.image}
-            alt=""
-            width={390}
-            height={380}
-          />
-        </div>}
+        {product && (
+          <div className="aspect-square bg-gray-100 bg-cover bg-center">
+            <Image
+              className="w-[100%] lg:w-[721px] lg:h-[759px]"
+              src={product.image}
+              alt=""
+              width={390}
+              height={380}
+            />
+          </div>
+        )}
 
         <div className="space-y-4 px-[24px] pb-[30px] pt-[20px] lg:w-[50%] lg:px-[80px] lg:pt-[90px]">
           <div className="flex flex-col justify-between items-start">
@@ -204,13 +238,20 @@ export default function ProductDetails() {
             <div className="flex flex-col items-center space-x-4 lg:mb-6 lg:flex lg:flex-row">
               <span className="text-[16px]">Quantity:</span>
               <div className="flex justify-center rounded-full bg-slate-300 px-6 py-2 space-x-10">
-                <button disabled={disableDecrement()} onClick={decrement}>-</button>
+                <button disabled={disableDecrement()} onClick={decrement}>
+                  -
+                </button>
                 <button>{count}</button>
-                <button disabled = {disableIncrement()} onClick={increment}>+</button>
+                <button disabled={disableIncrement()} onClick={increment}>
+                  +
+                </button>
               </div>
             </div>
 
-            <button onClick={handleAddToCart} className="w-full bg-[#2A254B] text-white py-3 text-sm lg:w-[143px] lg:py-[20px]">
+            <button
+              onClick={() => {handleAddToCart()}}
+              className="w-full bg-[#2A254B] text-white py-3 text-sm lg:w-[143px] lg:py-[20px]"
+            >
               Add to cart
             </button>
           </div>
