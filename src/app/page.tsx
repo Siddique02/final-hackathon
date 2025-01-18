@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import { GetProductData } from "@/sanity/sanity.query";
+// import { GetProductData } from "@/sanity/sanity.query";
 import Image from "next/image";
 import Link from "next/link";
 
