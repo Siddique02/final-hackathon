@@ -42,7 +42,7 @@ interface CartContextType {
   cart: Product[];
   setCart: (cart: Product[]) => void
   addToCart: (product: Product) => void;
-  deleteFromCart: (id: number) => void;
+  deleteFromCart: (id: string) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -54,7 +54,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart((prevCart) => [...prevCart, product]);
   };
 
-  const deleteFromCart = (id: number) => {
+  const deleteFromCart = (id: string) => {
     setCart((prevCart) => prevCart.filter((product) => product.id !== id));
   }
 

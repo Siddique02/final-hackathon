@@ -25,7 +25,7 @@ export default function ProductDetails() {
 
   const [isFreeDeliveryOpen, setIsFreeDeliveryOpen] = useState(true);
   const [productAddedPopUp, setProductAddedPopUp] = useState(false);
-  const [isAlreadyInCart, setIsAlreadyInCart] = useState(false)
+  const [isAlreadyInCart, setIsAlreadyInCart] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +36,8 @@ export default function ProductDetails() {
   }, []);
   const [products, setProducts] = useState<Product[]>([]);
 
+  const limitedProducts = products.slice(0, 4)
+
   const closeDialog = () => {
     setIsFreeDeliveryOpen(false);
   };
@@ -43,30 +45,29 @@ export default function ProductDetails() {
   const params = useParams();
   const id = params.id;
 
-  const getProductById = (id: number) => {
+  const getProductById = (id: string) => {
     return products.find((product) => {
       return product.id === id;
     });
   };
-  const product = getProductById(Number(id));
+  const product = getProductById(String(id));
 
-  const productIsInCart = (id: number) => {
+  const productIsInCart = (id: string) => {
     return cart.find((product) => product.id === id);
   };
 
   const handleAddToCart = () => {
-    if (productIsInCart(Number(id))) {
-      setIsAlreadyInCart(true)
+    if (productIsInCart(String(id))) {
+      setIsAlreadyInCart(true);
       setTimeout(() => {
-        setIsAlreadyInCart(false)
+        setIsAlreadyInCart(false);
       }, 3000);
-    } 
-    else if (product) {
+    } else if (product) {
       addToCart(product);
 
-      setProductAddedPopUp(true)
+      setProductAddedPopUp(true);
       setTimeout(() => {
-        setProductAddedPopUp(false)
+        setProductAddedPopUp(false);
       }, 3000);
     }
   };
@@ -84,14 +85,18 @@ export default function ProductDetails() {
 
   return (
     <div>
-        {/* Pop Up msgs */}
+      {/* Pop Up msgs */}
 
-        <div className={`fixed bottom-4 right-4 bg-slate-300 border-2 border-slate-600 font-bold px-10 py-4 rounded-lg transition-all duration-500 ease-in-out ${productAddedPopUp? "-translate-y-2": "translate-y-20"}`}>
-          <h1>Product Added To Cart.</h1>
-        </div>
-        <div className={`fixed bottom-4 right-4 bg-slate-300 border-2 border-slate-600 font-bold px-10 py-4 rounded-lg transition-all duration-500 ease-in-out ${isAlreadyInCart? "-translate-y-2": "translate-y-20"}`}>
-          <h1>Product Is Already In Your Cart.</h1>
-        </div>
+      <div
+        className={`fixed bottom-4 right-4 bg-slate-300 border-2 border-slate-600 font-bold px-10 py-4 rounded-lg transition-all duration-500 ease-in-out ${productAddedPopUp ? "-translate-y-2" : "translate-y-20"}`}
+      >
+        <h1>Product Added To Cart.</h1>
+      </div>
+      <div
+        className={`fixed bottom-4 right-4 bg-slate-300 border-2 border-slate-600 font-bold px-10 py-4 rounded-lg transition-all duration-500 ease-in-out ${isAlreadyInCart ? "-translate-y-2" : "translate-y-20"}`}
+      >
+        <h1>Product Is Already In Your Cart.</h1>
+      </div>
 
       <div>
         {isFreeDeliveryOpen && (
@@ -210,9 +215,9 @@ export default function ProductDetails() {
             <h3 className="font-medium">Product description</h3>
             <p className="text-sm text-gray-600">{product?.description}</p>
             <ul className="text-sm space-y-1">
-              <li>Premium materials</li>
-              <li>Handmade upholstery</li>
-              <li>Quality timeless classic</li>
+              <li>• Premium materials</li>
+              <li>• Handmade upholstery</li>
+              <li>• Quality timeless classic</li>
             </ul>
           </div>
 
@@ -221,15 +226,15 @@ export default function ProductDetails() {
             <div className="grid grid-cols-3 gap-4 text-sm">
               <div>
                 <p className="text-gray-600">Height</p>
-                <p>110cm</p>
+                <p>{product?.dimensions.height}</p>
               </div>
               <div>
                 <p className="text-gray-600">Width</p>
-                <p>75cm</p>
+                <p>{product?.dimensions.width}</p>
               </div>
               <div>
                 <p className="text-gray-600">Depth</p>
-                <p>50cm</p>
+                <p>{product?.dimensions.depth}</p>
               </div>
             </div>
           </div>
@@ -249,7 +254,9 @@ export default function ProductDetails() {
             </div>
 
             <button
-              onClick={() => {handleAddToCart()}}
+              onClick={() => {
+                handleAddToCart();
+              }}
               className="w-full bg-[#2A254B] text-white py-3 text-sm lg:w-[143px] lg:py-[20px]"
             >
               Add to cart
@@ -263,55 +270,28 @@ export default function ProductDetails() {
           You might also like
         </h2>
         <div className="flex flex-wrap justify-center md:justify-between gap-4">
-          <div>
-            <Image
-              className="mb-[33px] lg:w-[305px] lg:h-[375px]"
-              src="/Photo1.png"
-              alt=""
-              width={163}
-              height={201}
-            />
-            <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
-            <h3 className="lg:text-[18px]">£155</h3>
-          </div>
-          <div>
-            <Image
-              className="mb-[33px] lg:w-[305px] lg:h-[375px]"
-              src="/Photo2.png"
-              alt=""
-              width={163}
-              height={201}
-            />
-            <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
-            <h3 className="lg:text-[18px]">£155</h3>
-          </div>
-          <div>
-            <Image
-              className="mb-[33px] lg:w-[305px] lg:h-[375px]"
-              src="/Photo3.png"
-              alt=""
-              width={163}
-              height={201}
-            />
-            <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
-            <h3 className="lg:text-[18px]">£155</h3>
-          </div>
-          <div>
-            <Image
-              className="mb-[33px] lg:w-[305px] lg:h-[375px]"
-              src="/Photo4.png"
-              alt=""
-              width={163}
-              height={201}
-            />
-            <h2 className="mb-[22px] lg:text-[20px]">Rustic Vase Set</h2>
-            <h3 className="mb-[36px] lg:text-[18px]">£155</h3>
-          </div>
+        {limitedProducts.map((limitedProduct)=>{
+            return <div key={limitedProduct?.id}>
+              <Link href={limitedProduct.id}>
+                <Image
+                  className="mb-[12px] lg:w-[305px] lg:h-[375px]"
+                  src={limitedProduct.image}
+                  alt=""
+                  width={163}
+                  height={201}
+                />
+                <h2 className="lg:text-[20px]">{limitedProduct.name}</h2>
+                <h3 className="lg:text-[18px] mb-10">${limitedProduct.price}</h3>
+              </Link>
+            </div>
+        })}
         </div>
+
         <div>
-          <button className="w-[100%] flex justify-center items-center hover:bg-[#4a4566] h-[56px] mt-[32px]">
+          <Link href="/products"><button className="w-[100%] flex justify-center items-center hover:bg-[#4a4566] h-[56px] mt-[32px]">
             View collection
           </button>
+          </Link>
         </div>
       </div>
 

@@ -1,9 +1,18 @@
+
+
+interface Dimensions {
+    width: string;
+    height: string;
+    depth: string; 
+}
+
+
 export default interface Product {
-    id: number;
+    id: string;
     name: string;
     price: string;
     description: string;
-    category: string;
+    dimensions: Dimensions;
     image: string;
     rating: {
         rate: string;

@@ -34,27 +34,21 @@ async function uploadImageToSanity(imageUrl) {
 async function importData() {
   try {
     console.log('Fetching products from API...')
-    const response = await axios.get('https://fakestoreapi.com/products')
+    const response = await axios.get('https://hackathon-apis.vercel.app/api/products')
     const products = response.data
     console.log(`Fetched ${products.length} products`)
     for (const product of products) {
-      console.log(`Processing product: ${product.title}`)
+      console.log(`Processing product: ${product.name}`)
+      const productId = product._id
+      delete product._id
       let imageRef = null
       if (product.image) {
         imageRef = await uploadImageToSanity(product.image)
       }
       const sanityProduct = {
-        id: product.id,
         _type: 'product',
-        name: product.title,
+        name: product.name,
         description: product.description,
-        price: product.price,
-        discountPercentage: 0,
-        priceWithoutDiscount: product.price,
-        rating: product.rating?.rate || 0,
-        ratingCount: product.rating?.count || 0,
-        tags: product.category ? [product.category] : [],
-        sizes: [],
         image: imageRef ? {
           _type: 'image',
           asset: {
@@ -62,6 +56,12 @@ async function importData() {
             _ref: imageRef,
           },
         } : undefined,
+        id: productId,
+        features: product.features,
+        dimensions: product.dimensions,
+        category: product.category,
+        price: product.price,
+        tags: product.tags,
       }
       console.log('Uploading product to Sanity:', sanityProduct.name)
       const result = await client.create(sanityProduct)

@@ -10,7 +10,8 @@ export async function GetProductData() {
             description,
               price,
                 "slug":slug.current,
-                  "image": image.asset->url
+                  "image": image.asset->url,
+                    dimensions,
       }
     `
   );
