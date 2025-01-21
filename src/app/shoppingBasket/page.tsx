@@ -13,16 +13,16 @@ export default function Basket() {
 
   const subTotal = cart.reduce((total, product) => total + Number(product.price), 0) * count;
 
-  useEffect(() => {
-    const getItem = JSON.parse(localStorage.getItem("product") || "[]");
-    if (getItem) {
-      setCart(getItem)
-    }
-  }, [setCart]);
+  // useEffect(() => {
+  //   const getItem = JSON.parse(localStorage.getItem("product") || "[]");
+  //   if (getItem) {
+  //     setCart(getItem)
+  //   }
+  // }, [setCart]);
 
-  useEffect(() => {
-    localStorage.setItem("product", JSON.stringify(cart));
-  }, [cart]);
+  // useEffect(() => {
+  //   localStorage.setItem("product", JSON.stringify(cart));
+  // }, [cart]);
 
   return (
     <div className="main-sec">
