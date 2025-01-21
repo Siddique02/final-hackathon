@@ -4,11 +4,11 @@ import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { useCart } from "@/context/page";
 import { useQuantityCount } from "@/context/page";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Product from "@/types/page";
 
 export default function Basket() {
-  const { cart, setCart, deleteFromCart } = useCart();
+  const { cart, deleteFromCart } = useCart();
   const { count, increment, decrement } = useQuantityCount();
 
   const subTotal = cart.reduce((total, product) => total + Number(product.price), 0) * count;
