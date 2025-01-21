@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useCart } from "@/context/page";
 import { useQuantityCount } from "@/context/page";
 import { useEffect } from "react";
+import Product from "@/types/page";
 
 export default function Basket() {
   const { cart, setCart, deleteFromCart } = useCart();
@@ -15,9 +16,9 @@ export default function Basket() {
   useEffect(() => {
     const getItem = JSON.parse(localStorage.getItem("product") || "[]");
     if (getItem) {
-        setCart(getItem)
+      setCart(getItem)
     }
-  }, []);
+  }, [setCart]);
 
   useEffect(() => {
     localStorage.setItem("product", JSON.stringify(cart));
@@ -28,7 +29,7 @@ export default function Basket() {
       <Navbar />
       <div className="pt-[30px] px-[24px] flex flex-col gap-7">
         <h1 className="text-[24px] mb-[10px]">Your shopping cart</h1>
-        {cart.map((product) => (
+        {cart.map((product: Product) => (
           <div key={product.id} className="flex justify-between gap-6 pr-4">
             <div className="flex-shrink-0">
               <Image
