@@ -14,9 +14,12 @@ export default function Basket() {
   const subTotal = cart.reduce((total, product) => total + Number(product.price), 0) * count;
 
   useEffect(() => {
-    const getItem = localStorage.getItem("product");
-    if (getItem) {
-      setCart(JSON.parse(getItem))
+    const getItem = JSON.parse(localStorage.getItem("product") || 'null');
+    if (getItem === "null") {
+      console.log("Nothing to show");
+    }
+    else{
+      setCart(getItem)
     }
   }, [setCart]);
 
