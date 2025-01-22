@@ -15,7 +15,7 @@ export default function Basket() {
 
   // useEffect(() => {
   //   const getItem = JSON.parse(localStorage.getItem("product") || 'null');
-  //   if (getItem == "null") {
+  //   if (getItem == 'null') {
   //     console.log("Nothing to show");
   //   }
   //   else{
@@ -69,7 +69,7 @@ export default function Basket() {
       <div className="px-[24px] mb-[30px]">
         <div className="flex justify-end gap-5">
           <h1 className="text-[20px]">Subtotal</h1>
-          <h1 className="text-[20px]">{subTotal}</h1>
+          <h1 className="text-[20px]">${subTotal}</h1>
         </div>
         <p className="text-right text-[14px]">
           Taxes and shipping are calculated at checkout
