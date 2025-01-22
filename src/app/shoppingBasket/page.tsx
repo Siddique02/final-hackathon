@@ -4,28 +4,25 @@ import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { useCart } from "@/context/page";
 import { useQuantityCount } from "@/context/page";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import Product from "@/types/page";
 
 export default function Basket() {
-  const { cart, deleteFromCart } = useCart();
+  const { cart,setCart, deleteFromCart } = useCart();
   const { count, increment, decrement } = useQuantityCount();
 
   const subTotal = cart.reduce((total, product) => total + Number(product.price), 0) * count;
 
-  // useEffect(() => {
-  //   const getItem = JSON.parse(localStorage.getItem("product") || 'null');
-  //   if (getItem == 'null') {
-  //     console.log("Nothing to show");
-  //   }
-  //   else{
-  //     setCart(getItem)
-  //   }
-  // }, [setCart]);
+  useEffect(() => {
+    const getItem = JSON.parse(localStorage.getItem("product") || '[]');
+    if (getItem.length > 0) {
+      setCart(getItem)
+    }
+  }, [setCart]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("product", JSON.stringify(cart));
-  // }, [cart]);
+  useEffect(() => {
+    localStorage.setItem("product", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <div className="main-sec">
