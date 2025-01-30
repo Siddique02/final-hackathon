@@ -6,9 +6,6 @@ import { useCart } from "@/context/page";
 import { useQuantityCount } from "@/context/page";
 import { useEffect } from "react";
 import Product from "@/types/page";
-// import { loadStripe } from "@stripe/stripe-js";
-
-// const stripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
 
 export default function Basket() {
   const { cart, setCart, deleteFromCart } = useCart();
@@ -27,21 +24,6 @@ export default function Basket() {
   useEffect(() => {
     localStorage.setItem("product", JSON.stringify(cart));
   }, [cart]);
-
-  // const handleCheckout = async () => {
-  //   const stripeUI = await stripe;
-  //   let sessionResponse: any = await fetch("/api/checkout", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       data: [],
-  //     }),
-  //   });
-  //   sessionResponse = await sessionResponse.json();
-
-  //   stripeUI?.redirectToCheckout({
-  //     sessionId: sessionResponse.sessionId,
-  //   });
-  // };
 
   return (
     <div className="main-sec">
