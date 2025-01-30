@@ -6,9 +6,9 @@ import { useCart } from "@/context/page";
 import { useQuantityCount } from "@/context/page";
 import { useEffect } from "react";
 import Product from "@/types/page";
-import { loadStripe } from "@stripe/stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 
-const stripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
+// const stripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
 
 export default function Basket() {
   const { cart, setCart, deleteFromCart } = useCart();
@@ -28,20 +28,20 @@ export default function Basket() {
     localStorage.setItem("product", JSON.stringify(cart));
   }, [cart]);
 
-  const handleCheckout = async () => {
-    const stripeUI = await stripe;
-    let sessionResponse: any = await fetch("/api/checkout", {
-      method: "POST",
-      body: JSON.stringify({
-        data: [],
-      }),
-    });
-    sessionResponse = await sessionResponse.json();
+  // const handleCheckout = async () => {
+  //   const stripeUI = await stripe;
+  //   let sessionResponse: any = await fetch("/api/checkout", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       data: [],
+  //     }),
+  //   });
+  //   sessionResponse = await sessionResponse.json();
 
-    stripeUI?.redirectToCheckout({
-      sessionId: sessionResponse.sessionId,
-    });
-  };
+  //   stripeUI?.redirectToCheckout({
+  //     sessionId: sessionResponse.sessionId,
+  //   });
+  // };
 
   return (
     <div className="main-sec">
@@ -92,7 +92,7 @@ export default function Basket() {
         </p>
       </div>
       <div className="px-[24px]">
-        <button onClick={handleCheckout} className="w-[100%] flex justify-center items-center text-white bg-[#2A254B] h-[56px] mt-[32px] mb-[50px]">
+        <button className="w-[100%] flex justify-center items-center text-white bg-[#2A254B] h-[56px] mt-[32px] mb-[50px]">
           Go to checkout
         </button>
       </div>
