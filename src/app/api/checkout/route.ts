@@ -1,4 +1,4 @@
-import { NextApiRequest } from "next";
+
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
