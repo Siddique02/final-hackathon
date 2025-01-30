@@ -18,4 +18,5 @@ export default interface Product {
         rate: string;
         count: number;
     }
+    count: number
 }

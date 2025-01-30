@@ -13,7 +13,6 @@ export default function Home() {
     const fetchData = async () => {
       const products = await GetProductData();
       setProducts(products);
-      console.log(products)
     };
     fetchData();
   }, []);
